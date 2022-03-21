@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:desktop_window/desktop_window.dart';
 import 'routes/route.dart';
 
 void main() {
-  DesktopWindow.setFullScreen(true);
   runApp(const StartApp());
 }
 

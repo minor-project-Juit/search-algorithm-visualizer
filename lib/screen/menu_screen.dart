@@ -44,7 +44,9 @@ class _MenuScreenState extends State<MenuScreen> {
         ),
         createMenuButton(
           text: "Linear Search",
-          action: () {},
+          action: () {
+            Navigator.of(context).pushNamed('/linearSearch');
+          },
         ),
         SizedBox(
           height: 25,
