@@ -7,7 +7,7 @@ Future<int> binarySearch(List<RandomData> dataModel, Function updateUI,
 
   while (low <= high) {
     int mid = (low + (high - low) / 2).toInt();
-    await Future.delayed(const Duration(milliseconds: 500));
+    await Future.delayed(const Duration(milliseconds: 700));
     isSearching(true);
     updateUI(mid);
     if (dataModel[mid].data == data) {

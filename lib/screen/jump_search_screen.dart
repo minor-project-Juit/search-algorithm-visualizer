@@ -3,19 +3,19 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:searching_algorithm_visualization/widget/app_bar.dart';
 import '../model/input_data.dart';
-import '../widget/binary_search_button.dart';
+import '../widget/jump_search_button.dart';
 import '../widget/data_card.dart';
 import '../widget/input_formfield.dart';
 import '../widget/result_text_field.dart';
 
-class BinarySearchScreen extends StatefulWidget {
-  const BinarySearchScreen({Key? key}) : super(key: key);
+class JumpSearchScreen extends StatefulWidget {
+  const JumpSearchScreen({Key? key}) : super(key: key);
 
   @override
-  _BinarySearchScreenState createState() => _BinarySearchScreenState();
+  _JumpSearchScreenState createState() => _JumpSearchScreenState();
 }
 
-class _BinarySearchScreenState extends State<BinarySearchScreen> {
+class _JumpSearchScreenState extends State<JumpSearchScreen> {
   late List<RandomData> dataModel;
   late Stream<List<RandomData>> _stream;
   late StreamController<List<RandomData>> streamController;
@@ -60,7 +60,7 @@ class _BinarySearchScreenState extends State<BinarySearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: createAppBar("Binary Search Algorithm"),
+        appBar: createAppBar("Jump Search Algorithm"),
         body: Column(children: [
           const SizedBox(
             height: 150,
@@ -80,7 +80,7 @@ class _BinarySearchScreenState extends State<BinarySearchScreen> {
           const SizedBox(
             height: 50,
           ),
-          createBinarySearchButton(
+          createJumpSearchButton(
               setList, dataModel, input, setIndex, isSearchingFunction),
           isSearching ? const SizedBox() : OutputText(index),
         ]));

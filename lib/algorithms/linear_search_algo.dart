@@ -3,7 +3,7 @@ import '../model/input_data.dart';
 Future<int> linearSearch(List<RandomData> dataModel, Function updateUI,
     int data, Function setIndex, Function isSearching) async {
   for (int i = 0; i < 10; i++) {
-    await Future.delayed(const Duration(milliseconds: 500));
+    await Future.delayed(const Duration(milliseconds: 700));
     isSearching(true);
     updateUI(i);
     if (dataModel[i].data == data) {

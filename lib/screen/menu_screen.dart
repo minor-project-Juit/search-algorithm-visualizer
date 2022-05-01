@@ -62,7 +62,9 @@ class _MenuScreenState extends State<MenuScreen> {
         ),
         createMenuButton(
           text: "Jump Search",
-          action: () {},
+          action: () {
+            Navigator.of(context).pushNamed('/jumpSearch');
+          },
         ),
         SizedBox(
           height: 25,

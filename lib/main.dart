@@ -11,9 +11,6 @@ class StartApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Algorithm Visualizer',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: routes,
