@@ -7,6 +7,8 @@ import 'package:searching_algorithm_visualization/widget/result_text_field.dart'
 import '../model/input_data.dart';
 import '../widget/data_card.dart';
 import '../widget/input_formfield.dart';
+import '../widget/learn_more.dart';
+import '../widget/search_count.dart';
 
 class LinearSearchScreen extends StatefulWidget {
   const LinearSearchScreen({Key? key}) : super(key: key);
@@ -23,10 +25,17 @@ class _LinearSearchScreenState extends State<LinearSearchScreen> {
   late int input = 0;
   bool isSearching = true;
   int index = -1;
+  int count = 0;
 
   void setIndex(int i) {
     setState(() {
       index = i;
+    });
+  }
+
+  void setCount() {
+    setState(() {
+      count = 0;
     });
   }
 
@@ -68,6 +77,7 @@ class _LinearSearchScreenState extends State<LinearSearchScreen> {
           StreamBuilder<Object>(
               stream: _stream,
               builder: (context, snapshot) {
+                count++;
                 return Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: dataModel.map((e) => createCard(e)).toList(),
@@ -76,12 +86,21 @@ class _LinearSearchScreenState extends State<LinearSearchScreen> {
           const SizedBox(
             height: 50,
           ),
-          inputTextField(setValue: setInput),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              createSearchCount(count),
+              Center(child: inputTextField(setValue: setInput)),
+              createLearnMoreOption(
+                  "https://www.geeksforgeeks.org/linear-search/",
+                  "Linear Search")
+            ],
+          ),
           const SizedBox(
             height: 50,
           ),
-          createLinearSearchButton(
-              setList, dataModel, input, setIndex, isSearchingFunction),
+          createLinearSearchButton(setList, dataModel, input, setIndex,
+              isSearchingFunction, setCount),
           isSearching ? const SizedBox() : OutputText(index),
         ]));
   }

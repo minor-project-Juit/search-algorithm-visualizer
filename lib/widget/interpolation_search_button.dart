@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
-
-import '../algorithms/binary_search_algo.dart';
+import 'package:searching_algorithm_visualization/algorithms/interpolation_search_algo.dart';
 import '../model/input_data.dart';
 
-Widget createBinarySearchButton(Function action, List<RandomData> dataModel,
-    int data, Function setIndex, Function isSearching, Function setCount) {
+Widget createInterpolationSearchButton(
+    Function action,
+    List<RandomData> dataModel,
+    int data,
+    Function setIndex,
+    Function isSearching,
+    Function setCount) {
   return Container(
       width: 120,
       height: 40,
@@ -16,7 +20,8 @@ Widget createBinarySearchButton(Function action, List<RandomData> dataModel,
           child: TextButton(
               onPressed: () {
                 setCount();
-                binarySearch(dataModel, action, data, setIndex, isSearching);
+                interpolationSearch(
+                    dataModel, action, data, setIndex, isSearching);
               },
               child: const Text(
                 "Search",

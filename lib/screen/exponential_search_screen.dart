@@ -1,22 +1,25 @@
 import 'dart:async';
-import 'package:flutter/material.dart';
-import 'package:searching_algorithm_visualization/widget/app_bar.dart';
-import 'package:searching_algorithm_visualization/widget/learn_more.dart';
-import 'package:searching_algorithm_visualization/widget/search_count.dart';
-import '../model/input_data.dart';
-import '../widget/binary_search_button.dart';
-import '../widget/data_card.dart';
-import '../widget/input_formfield.dart';
-import '../widget/result_text_field.dart';
 
-class BinarySearchScreen extends StatefulWidget {
-  const BinarySearchScreen({Key? key}) : super(key: key);
+import 'package:flutter/material.dart';
+import 'package:searching_algorithm_visualization/model/input_data.dart';
+import 'package:searching_algorithm_visualization/widget/app_bar.dart';
+
+import '../widget/data_card.dart';
+import '../widget/expenential_search_button.dart';
+import '../widget/input_formfield.dart';
+import '../widget/learn_more.dart';
+import '../widget/result_text_field.dart';
+import '../widget/search_count.dart';
+
+class ExpontentialSearchSCreen extends StatefulWidget {
+  const ExpontentialSearchSCreen({Key? key}) : super(key: key);
 
   @override
-  _BinarySearchScreenState createState() => _BinarySearchScreenState();
+  State<ExpontentialSearchSCreen> createState() =>
+      _ExpontentialSearchSCreenState();
 }
 
-class _BinarySearchScreenState extends State<BinarySearchScreen> {
+class _ExpontentialSearchSCreenState extends State<ExpontentialSearchSCreen> {
   late List<RandomData> dataModel;
   late Stream<List<RandomData>> _stream;
   late StreamController<List<RandomData>> streamController;
@@ -32,12 +35,6 @@ class _BinarySearchScreenState extends State<BinarySearchScreen> {
     });
   }
 
-  void setCount() {
-    setState(() {
-      count = 0;
-    });
-  }
-
   void setInput(int value) {
     setState(() {
       input = value;
@@ -47,6 +44,12 @@ class _BinarySearchScreenState extends State<BinarySearchScreen> {
   void isSearchingFunction(bool value) {
     setState(() {
       isSearching = value;
+    });
+  }
+
+  void setCount() {
+    setState(() {
+      count = 0;
     });
   }
 
@@ -68,7 +71,7 @@ class _BinarySearchScreenState extends State<BinarySearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: createAppBar("Binary Search Algorithm"),
+        appBar: createAppBar("Exponential Search Algorithm"),
         body: Column(children: [
           const SizedBox(
             height: 150,
@@ -91,14 +94,14 @@ class _BinarySearchScreenState extends State<BinarySearchScreen> {
               createSearchCount(count),
               Center(child: inputTextField(setValue: setInput)),
               createLearnMoreOption(
-                  "https://www.geeksforgeeks.org/binary-search/",
-                  "Binary Search")
+                  "https://www.geeksforgeeks.org/exponential-search/",
+                  "Exponential Search")
             ],
           ),
           const SizedBox(
             height: 50,
           ),
-          createBinarySearchButton(setList, dataModel, input, setIndex,
+          createExponentialSearchButton(setList, dataModel, input, setIndex,
               isSearchingFunction, setCount),
           isSearching ? const SizedBox() : OutputText(index),
         ]));

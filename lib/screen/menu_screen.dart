@@ -71,14 +71,18 @@ class _MenuScreenState extends State<MenuScreen> {
         ),
         createMenuButton(
           text: "Interpolation Search",
-          action: () {},
+          action: () {
+            Navigator.of(context).pushNamed('/interpolationSearch');
+          },
         ),
         SizedBox(
           height: 25,
         ),
         createMenuButton(
           text: "Exponential Search",
-          action: () {},
+          action: () {
+            Navigator.of(context).pushNamed('/exponentialSearch');
+          },
         ),
       ]),
     );

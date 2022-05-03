@@ -4,7 +4,7 @@ import '../algorithms/jump_search_algo.dart';
 import '../model/input_data.dart';
 
 Widget createJumpSearchButton(Function action, List<RandomData> dataModel,
-    int data, Function setIndex, Function isSearching) {
+    int data, Function setIndex, Function isSearching, Function setCount) {
   return Container(
       width: 120,
       height: 40,
@@ -15,6 +15,7 @@ Widget createJumpSearchButton(Function action, List<RandomData> dataModel,
         child: Center(
           child: TextButton(
               onPressed: () {
+                setCount();
                 jumpSearch(dataModel, action, data, setIndex, isSearching);
               },
               child: const Text(

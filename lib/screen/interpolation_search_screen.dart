@@ -1,22 +1,25 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:searching_algorithm_visualization/widget/app_bar.dart';
-import 'package:searching_algorithm_visualization/widget/learn_more.dart';
-import 'package:searching_algorithm_visualization/widget/search_count.dart';
+
 import '../model/input_data.dart';
-import '../widget/binary_search_button.dart';
 import '../widget/data_card.dart';
 import '../widget/input_formfield.dart';
+import '../widget/interpolation_search_button.dart';
+import '../widget/learn_more.dart';
 import '../widget/result_text_field.dart';
+import '../widget/search_count.dart';
 
-class BinarySearchScreen extends StatefulWidget {
-  const BinarySearchScreen({Key? key}) : super(key: key);
+class InterpolationSearchScreen extends StatefulWidget {
+  const InterpolationSearchScreen({Key? key}) : super(key: key);
 
   @override
-  _BinarySearchScreenState createState() => _BinarySearchScreenState();
+  State<InterpolationSearchScreen> createState() =>
+      _InterpolationSearchScreenState();
 }
 
-class _BinarySearchScreenState extends State<BinarySearchScreen> {
+class _InterpolationSearchScreenState extends State<InterpolationSearchScreen> {
   late List<RandomData> dataModel;
   late Stream<List<RandomData>> _stream;
   late StreamController<List<RandomData>> streamController;
@@ -26,15 +29,15 @@ class _BinarySearchScreenState extends State<BinarySearchScreen> {
   int index = -1;
   int count = 0;
 
-  void setIndex(int i) {
-    setState(() {
-      index = i;
-    });
-  }
-
   void setCount() {
     setState(() {
       count = 0;
+    });
+  }
+
+  void setIndex(int i) {
+    setState(() {
+      index = i;
     });
   }
 
@@ -68,7 +71,7 @@ class _BinarySearchScreenState extends State<BinarySearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: createAppBar("Binary Search Algorithm"),
+        appBar: createAppBar("Interpolation Search Algorithm"),
         body: Column(children: [
           const SizedBox(
             height: 150,
@@ -91,14 +94,14 @@ class _BinarySearchScreenState extends State<BinarySearchScreen> {
               createSearchCount(count),
               Center(child: inputTextField(setValue: setInput)),
               createLearnMoreOption(
-                  "https://www.geeksforgeeks.org/binary-search/",
-                  "Binary Search")
+                  "https://www.geeksforgeeks.org/interpolation-search/",
+                  "Interpolation Search")
             ],
           ),
           const SizedBox(
             height: 50,
           ),
-          createBinarySearchButton(setList, dataModel, input, setIndex,
+          createInterpolationSearchButton(setList, dataModel, input, setIndex,
               isSearchingFunction, setCount),
           isSearching ? const SizedBox() : OutputText(index),
         ]));

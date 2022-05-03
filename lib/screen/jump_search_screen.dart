@@ -6,7 +6,9 @@ import '../model/input_data.dart';
 import '../widget/jump_search_button.dart';
 import '../widget/data_card.dart';
 import '../widget/input_formfield.dart';
+import '../widget/learn_more.dart';
 import '../widget/result_text_field.dart';
+import '../widget/search_count.dart';
 
 class JumpSearchScreen extends StatefulWidget {
   const JumpSearchScreen({Key? key}) : super(key: key);
@@ -23,6 +25,13 @@ class _JumpSearchScreenState extends State<JumpSearchScreen> {
   late int input = 0;
   bool isSearching = true;
   int index = -1;
+  int count = 0;
+
+  void setCount() {
+    setState(() {
+      count = 0;
+    });
+  }
 
   void setIndex(int i) {
     setState(() {
@@ -68,6 +77,7 @@ class _JumpSearchScreenState extends State<JumpSearchScreen> {
           StreamBuilder<Object>(
               stream: _stream,
               builder: (context, snapshot) {
+                count++;
                 return Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: dataModel.map((e) => createCard(e)).toList(),
@@ -76,12 +86,20 @@ class _JumpSearchScreenState extends State<JumpSearchScreen> {
           const SizedBox(
             height: 50,
           ),
-          inputTextField(setValue: setInput),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              createSearchCount(count),
+              Center(child: inputTextField(setValue: setInput)),
+              createLearnMoreOption(
+                  "https://www.geeksforgeeks.org/jump-search/", "Jump Search")
+            ],
+          ),
           const SizedBox(
             height: 50,
           ),
-          createJumpSearchButton(
-              setList, dataModel, input, setIndex, isSearchingFunction),
+          createJumpSearchButton(setList, dataModel, input, setIndex,
+              isSearchingFunction, setCount),
           isSearching ? const SizedBox() : OutputText(index),
         ]));
   }

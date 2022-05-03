@@ -3,7 +3,7 @@ import '../algorithms/linear_search_algo.dart';
 import '../model/input_data.dart';
 
 Widget createLinearSearchButton(Function action, List<RandomData> dataModel,
-    int data, Function setIndex, Function isSearching) {
+    int data, Function setIndex, Function isSearching, Function setCount) {
   return Container(
       width: 120,
       height: 40,
@@ -14,6 +14,7 @@ Widget createLinearSearchButton(Function action, List<RandomData> dataModel,
         child: Center(
           child: TextButton(
               onPressed: () {
+                setCount();
                 linearSearch(dataModel, action, data, setIndex, isSearching);
               },
               child: const Text(
